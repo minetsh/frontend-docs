@@ -1,7 +1,6 @@
 export const basename = '/frontend-docs';
 
-const prefix = process.env.NODE_ENV === 'production' ? basename : '';
-
-export const fetchDocmentSource = (uri: string): Promise<string> => {
-  return fetch(`${prefix}${uri}`).then(response => response.text());
+export const fetchDocmentSource = async (uri: string): Promise<string> => {
+  const response = await fetch(uri);
+  return await response.text();
 };
