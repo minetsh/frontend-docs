@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MarkDown from 'react-markdown';
 import { dids } from '../../docs';
+import { fetchDocmentSource } from '../../common/app';
 import './index.scss';
 
 type Props = {
@@ -12,11 +13,7 @@ function Doc(props: Props) {
   const [source, setSource] = useState('');
   useEffect(() => {
     const { did } = props.match.params;
-    fetch(dids[did]).then(response => {
-      response.text().then(source => {
-        setSource(source);
-      });
-    });
+    fetchDocmentSource(dids[did]).then(setSource);
   }, [props.match]);
 
   return (
