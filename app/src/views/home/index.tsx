@@ -1,17 +1,22 @@
-import React from 'react';
-import MarkDown from 'react-markdown';
-import docs from '../../docs/docs.json';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import docs from '../../docs';
+import Node from '../../components/node';
+import Doc from '../doc';
 import './index.scss';
 
-function Home() {
+function Home(props: any) {
+  useEffect(() => {
+    console.log('home', props.location, props.match);
+  });
   return (
     <div className="home">
-      <div className="docs">
-        {docs.folders.map(folder => {
-          return <li>{folder.name}</li>;
-        })}
+      <div className="menus">
+        <Node doc={docs}></Node>
       </div>
-      <div className="book">{/* <MarkDown source={README} /> */}</div>
+      <Router>
+        <Route location={props.location} path="/:did" component={Doc} />
+      </Router>
     </div>
   );
 }
