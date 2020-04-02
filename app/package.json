@@ -2,6 +2,7 @@
   "name": "minetsh.github.io",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/frontend-docs",
   "scripts": {
     "doc": "node ./scripts/doc.js",
     "start": "react-scripts start",
