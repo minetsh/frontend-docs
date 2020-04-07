@@ -8,7 +8,7 @@ type Props = {
 
 function Node(props: Props) {
   const { doc } = props;
-  const [collapse, setCollapse] = useState(true);
+  const [collapse, setCollapse] = useState(false);
   return (
     <div>
       <div className="node-item" onClick={() => setCollapse(!collapse)}>
@@ -18,11 +18,13 @@ function Node(props: Props) {
           <span>{doc.name}</span>
         )}
       </div>
-      {!collapse &&
-        !doc.file &&
-        doc.docs.map((d: any) => {
-          return <Node key={d.uid} doc={d}></Node>;
-        })}
+      {!collapse && !doc.file && (
+        <div className="node-item__docs">
+          {doc.docs.map((d: any) => {
+            return <Node key={d.uid} doc={d}></Node>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

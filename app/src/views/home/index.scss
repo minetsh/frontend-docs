@@ -1,19 +1,15 @@
 .home {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 
-  .menus {
-    width: 400px;
-    background-color: pink;
+  &__navigation {
+    width: 300px;
+    background-color: #f5f5f5;
   }
 
-  .docs {
-    width: 200px;
-    background-color: green;
-  }
-
-  .book {
+  &__docs {
     flex: 1;
+    padding: 20px;
   }
 }

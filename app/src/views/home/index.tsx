@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import docs from '../../docs';
 import Node from '../../components/node';
 import Doc from '../doc';
@@ -11,12 +11,12 @@ function Home(props: any) {
   });
   return (
     <div className="home">
-      <div className="menus">
+      <nav className="home__navigation">
         <Node doc={docs}></Node>
-      </div>
-      <Router>
+      </nav>
+      <div className="home__docs">
         <Route location={props.location} path="/:did" component={Doc} />
-      </Router>
+      </div>
     </div>
   );
 }
